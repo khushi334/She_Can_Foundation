@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Impact Stories | She Can Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Archive page specific layouts */
+        .archive-hero {
+            padding: 140px 8% 60px 8%;
+            background: linear-gradient(180deg, #FFF9F0 0%, #FFFDF9 100%);
+            text-align: center;
+        }
+        .archive-hero h1 {
+            font-family: 'Marcellus', serif;
+            font-size: 42px;
+            color: #2F2A25;
+        }
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 40px 8% 100px 8%;
+        }
+        .story-card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-bottom: 3px solid transparent;
+            transition: transform 0.3s combined, border-color 0.3s;
+        }
+        .story-card:hover {
+            transform: translateY(-5px);
+            border-color: #E2953B;
+            box-shadow: 0 10px 25px rgba(140, 42, 50, 0.06);
+        }
+        .story-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 25px;
+        }
+        .card-content h3 {
+            font-family: 'Marcellus', serif;
+            font-size: 20px;
+            color: #8C2A32;
+            margin-bottom: 8px;
+        }
+        .card-content p {
+            font-size: 14px;
+            color: #5C5249;
+            text-align: justify;
+        }
+        .back-home {
+            margin-bottom: 20px;
+            display: inline-block;
+            text-decoration: none;
+            color: #E2953B;
+            font-weight: 600;
+        }
+        /* --- Enhanced High-End Grid & Card Styles --- */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            padding: 40px 8% 100px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .story-card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(140, 42, 50, 0.08);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .card-content h3 {
+            font-family: 'Marcellus', serif;
+            font-size: 24px;
+            color: #8C2A32; /* Rich Indian Terracotta Crimson */
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        /* The signature pink/crimson decorative underline */
+        .card-accent-line {
+            width: 50px;
+            height: 3px;
+            background-color: #E26D82; /* Muted Rose Accent */
+            margin-bottom: 24px;
+            border-radius: 2px;
+        }
+
+        .card-description {
+            font-size: 15px;
+            color: #5C5249;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        /* Bottom Section alignment with micro tags */
+        .card-footer {
+            margin-top: auto; /* Pushes footer neatly to the baseline */
+            border-top: 1px solid #F4EFEA;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .footer-tag {
+            font-size: 14px;
+            font-weight: 700;
+            color: #2F2A25;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-tag .icon {
+            color: #E26D82;
+            font-size: 16px;
+        }
+
+        .footer-subtext {
+            font-size: 13px;
+            color: #7A6F64;
+            padding-left: 24px; /* Matches icon indent */
+        }
+
+        /* Responsive Breakpoint Adjustment */
+        @media (max-width: 900px) {
+            .stories-grid {
+                grid-template-columns: 1fr;
+                padding: 20px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">She Can <span>Foundation</span></div>
+        <nav>
+            <a href="she.html#welcome">Home</a>
+            <a href="she.html#home">About Us</a>
+            <a href="she.html#stories">Our Stories</a>
+        </nav>
+    </header>
+
+    <main class="archive-hero">
+        <a href="she.html#stories" class="back-home">&larr; Back to Main Site</a>
+        <h1>Voices of Transformation</h1>
+        <p style="color: #7A6F64; margin-top: 10px;">An extended chronicle of resilience and self-reliance across Indian communities.</p>
+    </main>
+
+    <section class="stories-grid">
+        <div class="story-card">
+            <div class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1655739378936-905f2a2a76f3?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Meera">
+            </div>
+
+            <div class="card-content">
+                <h3>Breaking Barriers</h3>
+                <div class="card-accent-line"></div>
+
+                <p class="card-description">After years of financial hardship, Meera joined our skill development program and learned tailoring techniques that helped her start earning independently. Today, she supports her children’s education and inspires other women in her community to believe in their potential.</p>
+                <div class="card-footer">
+                    <span class="footer-tag"><span class="icon">♡</span> Dream. Learn. Achieve.</span>
+                    <span class="footer-subtext">Every girl deserves the chance to shine.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="story-card">
+            <div class="card-img-wrapper">
+                <img src="https://plus.unsplash.com/premium_photo-1705624584602-2fefc5114bfd?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Priya">
+            </div>
+            <div class="card-content">
+                <h3>Creativity Meets Opportunity</h3>
+                <div class="card-accent-line"></div>
+                <p class="card-description">With guidance from our digital literacy workshops, Priya learned how to showcase handmade crafts online and connect with customers across the country. Her small home business is now creating opportunities for other women around her.</p>
+                <div class="card-footer">
+                    <span class="footer-tag"><span class="icon">👥</span> Empowered Women, Empower Communities.</span>
+                    <span class="footer-subtext">Skills build confidence. Confidence builds change.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="story-card">
+            <div class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1618245472177-2a74ad3b994a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kiran">
+            </div>
+            <div class="card-content">
+                <h3>Education opens Nwe Horizons</h3>
+                <div class="card-accent-line"></div>
+                <p class="card-description">Rani always dreamed of continuing her studies, but financial challenges made it difficult. With a scholarship and mentorship from SHe Can Foundation, she is now pursuing her education with confidence and inspirig many girls in her village to do the same.</p>
+                <div class="card-footer">
+                    <span class="footer-tag"><span class="icon">👥</span> Empowered Women, Empower Communities.</span>
+                    <span class="footer-subtext">Skills build confidence. Confidence builds change.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="story-card">
+            <div class="card-img-wrapper">
+                <img src="https://plus.unsplash.com/premium_photo-1718570264909-cb7e7322106d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kiran">
+            </div>
+            <div class="card-content">
+                <h3>Skills Today, Strength Tomorrow</h3>
+                <div class="card-accent-line"></div>
+                <p class="card-description">Lata joined our vocational training program to learn embroidery and handicrafts. Today, she earns a steady income, supports her family and trains other women in her community to become financially independent.</p>
+                <div class="card-footer">
+                    <span class="footer-tag"><span class="icon">♡</span> Dream. Learn. Achieve.</span>
+                    <span class="footer-subtext">Every girl deserves the chance to shine.</span>
+                </div>
+            </div>
+        </div>
+
+        
+    </section>
+
+    <footer>
+        <p>&copy; 2026 She Can Foundation. Govt. Reg. NGO under the Indian Society Act, 1860.</p>
+    </footer>
+
+</body>
+</html>

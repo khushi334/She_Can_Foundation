@@ -1,0 +1,2219 @@
+/* --- Global Configuration & Warm Theme --- */
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background-color: #FFFDF9;
+    color: #2F2A25;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+
+.landing-content {
+    position: relative;
+    z-index: 2;
+    padding: 60px 20px 0 20px; /* Added 60px top padding to clear the fixed navbar */
+}
+
+/* --- 🌟 NEW: Cinematic Blurred Welcome Landing View --- */
+.welcome-landing {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Takes full initial view screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background-color: #2F2A25; /* Fallback base tint */
+}
+
+/* Background element handling blurry aesthetic image styling */
+.welcome-landing .blurry-bg {
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px; /* Slight overflow removes raw edges caused by blur filter */
+    background-image: linear-gradient(to bottom, rgba(47, 42, 37, 0.5), rgba(47, 42, 37, 0.85)), 
+                      url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=1200');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px); /* Aesthetic Indian Portrait Blur setting */
+    z-index: 1;
+    transform: scale(1.02); /* Clean pixel scaling fallback adjustment */
+}
+
+.landing-content {
+    position: relative;
+    z-index: 2; /* Sits sharply on top of the blur filter wrap layer */
+    padding: 0 20px;
+}
+
+/* Animation: Rise from bottom and lock securely into position */
+.slide-up-text {
+    font-family: 'Marcellus', serif;
+    font-size: 64px;
+    color: #FFFDF9;
+    line-height: 1.2;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateY(100px); /* Lower starting position */
+    animation: textRiseStyle 1.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+.slide-up-text span {
+    color: #E2953B;
+}
+
+.fade-in-subtext {
+    font-size: 18px;
+    color: #CBC3BB;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: subtextFadeStyle 1.2s ease forwards;
+    animation-delay: 1.2s; /* Starts right as text finishes locking into place */
+}
+
+.scroll-indicator {
+    margin-top: 40px;
+    font-size: 28px;
+    color: #E2953B;
+    opacity: 0;
+    animation: subtextFadeStyle 1.2s ease forwards, bounceIndicator 2s infinite;
+    animation-delay: 1.5s;
+}
+
+/* Keyframe Script Steps */
+@keyframes textRiseStyle {
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Lock strictly into position */
+    }
+}
+
+@keyframes subtextFadeStyle {
+    to { opacity: 1; }
+}
+
+@keyframes bounceIndicator {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+/* --- Navigation Header --- */
+header {
+    background: #FFFFFF;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(140, 42, 50, 0.04);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Marcellus', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #8C2A32;
+}
+
+.logo span { color: #E2953B; font-size: 20px; }
+
+nav a {
+    text-decoration: none;
+    color: #5C5249;
+    margin-left: 28px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+
+nav a:hover { color: #8C2A32; }
+
+/* --- Hero Section 2 --- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 8%;
+    min-height: 85vh;
+    background: linear-gradient(180deg, #FFF9F0 0%, #FFFDF9 100%);
+}
+
+.hero-content { max-width: 52%; }
+
+.hero-content h2 {
+    font-family: 'Marcellus', serif;
+    font-size: 48px;
+    color: #2F2A25;
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+.hero-content h2 span {
+    color: #8C2A32;
+    border-bottom: 3px solid #E2953B;
+}
+
+.hero-content p { font-size: 17px; color: #5C5249; margin-bottom: 35px; }
+
+.btn-join {
+    display: inline-block;
+    padding: 15px 36px;
+    background-color: #8C2A32;
+    color: #FFFFFF;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(140, 42, 50, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-join:hover {
+    background-color: #722026;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(140, 42, 50, 0.4);
+}
+
+/* --- Glowing Image Container & Hover Effect --- */
+.hero-image { max-width: 42%; display: flex; justify-content: center; }
+
+.glow-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 12px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glow-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #E2953B, #8C2A32);
+    filter: blur(15px);
+    opacity: 0.4;
+    z-index: -1;
+    transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+.glow-wrapper img {
+    width: 100%; height: auto; border-radius: 12px; object-fit: cover;
+    border: 2px solid rgba(226, 149, 59, 0.2); transition: all 0.4s ease;
+}
+
+.glow-wrapper:hover { transform: scale(1.04) rotate(1deg); }
+.glow-wrapper:hover::before { opacity: 0.8; filter: blur(25px); }
+.glow-wrapper:hover img { border-color: #E2953B; box-shadow: 0 10px 30px rgba(140, 42, 50, 0.2); }
+
+/* --- Synchronized Stories Section 3 --- */
+.stories-section { padding: 90px 8%; background-color: #FDF8F2; text-align: center; }
+.stories-section h2 { font-family: 'Marcellus', serif; font-size: 38px; color: #2F2A25; margin-bottom: 50px; }
+.stories-section h2::after { content: ''; display: block; width: 50px; height: 3px; background-color: #E2953B; margin: 12px auto 0 auto; }
+
+.carousel-container {
+    display: flex; align-items: center; justify-content: center; gap: 60px;
+    max-width: 1000px; margin: 0 auto; background: #FFFFFF; padding: 40px;
+    border-radius: 16px; box-shadow: 0 10px 30px rgba(47, 42, 37, 0.04);
+}
+
+.carousel-images { position: relative; width: 380px; height: 380px; flex-shrink: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+.story-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.08); transition: opacity 0.8s ease, transform 0.8s ease; }
+.story-img.active { opacity: 1; transform: scale(1); }
+
+.carousel-text-box { flex-grow: 1; position: relative; text-align: left; min-height: 220px; display: flex; align-items: center; }
+.story-text { position: absolute; opacity: 0; transform: translateX(20px); transition: opacity 0.6s ease, transform 0.6s ease; pointer-events: none; }
+.story-text.active { position: relative; opacity: 1; transform: translateX(0); pointer-events: auto; }
+.story-text h3 { font-family: 'Marcellus', serif; font-size: 26px; color: #8C2A32; margin-bottom: 6px; }
+.story-text .location { display: inline-block; font-size: 13px; font-weight: 600; color: #E2953B; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+.story-text p { font-size: 16px; color: #5C5249; font-style: italic; border-left: 3px solid #E6DFD7; padding-left: 15px; }
+
+/* --- Scroll Reveal Animations --- */
+.scroll-reveal { opacity: 0; transform: translateY(35px); transition: opacity 0.9s cubic-bezier(0.215, 0.610, 0.355, 1), transform 0.9s cubic-bezier(0.215, 0.610, 0.355, 1); }
+.scroll-reveal.reveal-active { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.2s; }
+
+/* --- Interactive Modals --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(47, 42, 37, 0.7); display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; z-index: 2000; }
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
+.modal-box { background: #FFFFFF; padding: 45px; border-radius: 8px; width: 92%; max-width: 460px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.15); text-align: center; border-top: 4px solid #8C2A32; }
+.close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #A89F95; }
+.close-btn:hover { color: #8C2A32; }
+.modal-box h3 { font-family: 'Marcellus', serif; font-size: 26px; margin-bottom: 12px; }
+.modal-box p { font-size: 14px; color: #7A6F64; margin-bottom: 25px; }
+.modal-box input { width: 100%; padding: 14px; margin-bottom: 18px; border: 1px solid #E6DFD7; border-radius: 4px; outline: none; }
+.modal-box input:focus { border-color: #E2953B; }
+.btn-submit { width: 100%; padding: 14px; background-color: #E2953B; color: white; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; }
+.btn-submit:hover { background-color: #CE8129; }
+.success-message { display: none; margin-top: 18px; color: #388E3C; font-weight: 600; }
+
+/* --- Footer Area --- */
+footer { background-color: #2F2A25; color: #CBC3BB; text-align: center; padding: 40px 8%; font-size: 14px; border-top: 4px solid #E2953B; }
+footer p { margin-bottom: 8px; }
+footer .credits { font-size: 12px; color: #8E847A; }
+
+/* --- Responsive Media Layers --- */
+@media (max-width: 915px) {
+    .slide-up-text { font-size: 44px; }
+    .carousel-container { flex-direction: column; padding: 30px 20px; }
+    .carousel-images { width: 100%; max-width: 340px; height: 340px; }
+    .carousel-text-box { text-align: center; min-height: auto; margin-top: 20px; }
+    .story-text p { border-left: none; padding-left: 0; }
+}
+
+@media (max-width: 768px) {
+    .hero { flex-direction: column-reverse; text-align: center; padding: 40px 5%; }
+    .hero-content { max-width: 100%; margin-top: 40px; }
+    .hero-image { max-width: 75%; }
+}
+
+
+/* --- Custom Form Validation Styles --- */
+.input-group {
+    text-align: left;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.modal-box input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 0px; /* Reset old margin to handle error text positioning */
+    border: 1px solid #E6DFD7;
+    border-radius: 4px;
+    outline: none;
+    background-color: #FFFDFB;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+/* Red alert border when input is invalid */
+.modal-box input.invalid-field {
+    border-color: #D32F2F !important;
+    background-color: #FFFBFA;
+}
+
+/* Hidden by default; displayed via JS when errors occur */
+.error-text {
+    display: none;
+    font-size: 12px;
+    color: #D32F2F;
+    font-weight: 500;
+    margin-top: 4px;
+    padding-left: 2px;
+}
+
+/* --- 📜 More Stories Redirect Tag Styles --- */
+.more-stories-wrapper {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.more-stories-wrapper p {
+    font-size: 15px;
+    color: #7A6F64;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.btn-more-stories {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: transparent;
+    color: #8C2A32; /* Primary Terracotta tone */
+    border: 2px solid #8C2A32;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Elegant fill shift effect on hover */
+.btn-more-stories:hover {
+    background-color: #8C2A32;
+    color: #FFFDF9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(140, 42, 50, 0.15);
+}
+
+/* --- Navigation Header Logo Alignment --- */
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Ensures it sits tightly on the left */
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 50px; /* Constrains the logo height perfectly to the navbar size */
+    width: auto;  /* Maintains the original aesthetic aspect ratio */
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Subtle, high-end hover effect on the logo graphic */
+.logo img:hover {
+    transform: scale(1.03);
+}
+
+.founder-quote-container {
+    position: relative;
+    max-width: 950px;
+    margin: 80px auto 20px auto; /* Spacious buffer away from the button above */
+    background: linear-gradient(145deg, #2F2A25 0%, #221E1A 100%); /* Elegant textured dark charcoal finish */
+    padding: 60px 80px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(47, 42, 37, 0.15);
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Big aesthetic background quotation watermark symbol */
+.quote-graphic-mark {
+    position: absolute;
+    top: -20px;
+    left: 40px;
+    font-family: 'Marcellus', serif;
+    font-size: 180px;
+    color: rgba(226, 149, 59, 0.08); /* Translucent Ochre watermark */
+    user-select: none;
+    line-height: 1;
+}
+
+.quote-content {
+    position: relative;
+    z-index: 2;
+}
+
+.quote-text {
+    font-size: 22px;
+    color: #FFFDF9; /* Bright warm cream text color */
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    letter-spacing: 0.3px;
+}
+
+/* Author Tag Details styling alignment */
+.quote-author-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.author-line {
+    width: 40px;
+    height: 2px;
+    background-color: #E2953B; /* Accent strip break color */
+    margin-bottom: 15px;
+}
+
+.author-name {
+    font-family: 'Marcellus', serif;
+    font-size: 16px;
+    color: #E2953B; /* Vibrant signature Ochre contrast hue */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.author-title {
+    font-size: 13px;
+    color: #CBC3BB; /* Muted subtitle texture color */
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* --- Responsive Layout for Mobile/Tablets --- */
+@media (max-width: 768px) {
+    .founder-quote-container {
+        padding: 40px 30px;
+        margin: 60px 20px 0 20px;
+    }
+    
+    .quote-text {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+    
+    .quote-graphic-mark {
+        font-size: 120px;
+        left: 20px;
+        top: -10px;
+    }
+}
+
+/* --- 🖋️ Creative Founder Quote Section Styles with Shiny Glow & Hover --- */
+.founder-quote-container {
+    position: relative;
+    max-width: 950px;
+    margin: 80px auto 20px auto; /* Spacious buffer away from the button above */
+    background: linear-gradient(145deg, #2F2A25 0%, #1E1A17 100%); /* Elegant textured dark charcoal finish */
+    padding: 60px 80px;
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: center;
+    
+    /* --- ✨ Base Glow Setup --- */
+    border: 1px solid rgba(226, 149, 59, 0.15); /* Soft gold outline */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 
+                0 0 20px rgba(226, 149, 59, 0.05); /* Gentle, passive ambient glow */
+    
+    /* Smooth transitions for all changing properties */
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                border-color 0.5s ease;
+}
+
+/* --- 🚀 Dynamic Hover State Effect --- */
+.founder-quote-container:hover {
+    transform: translateY(-8px) scale(1.01); /* Subtle premium lift and scale */
+    border-color: rgba(226, 149, 59, 0.4); /* Gold border brightens up */
+    
+    /* The box-shadow expands outward, creating a rich warm golden/terracotta bloom */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 
+                0 0 30px rgba(226, 149, 59, 0.25), 
+                0 0 60px rgba(140, 42, 50, 0.15); 
+}
+
+/* Big aesthetic background quotation watermark symbol */
+.quote-graphic-mark {
+    position: absolute;
+    top: -20px;
+    left: 40px;
+    font-family: 'Marcellus', serif;
+    font-size: 180px;
+    color: rgba(226, 149, 59, 0.08); /* Translucent Ochre watermark */
+    user-select: none;
+    line-height: 1;
+    transition: color 0.5s ease, transform 0.5s ease;
+}
+
+/* Minor creative flair: Make the quotation mark glow slightly on hover too */
+.founder-quote-container:hover .quote-graphic-mark {
+    color: rgba(226, 149, 59, 0.15);
+    transform: rotate(-5deg) scale(1.05);
+}
+
+.quote-content {
+    position: relative;
+    z-index: 2;
+}
+
+.quote-text {
+    font-size: 22px;
+    color: #FFFDF9; /* Bright warm cream text color */
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    letter-spacing: 0.3px;
+}
+
+/* Author Tag Details styling alignment */
+.quote-author-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.author-line {
+    width: 40px;
+    height: 2px;
+    background-color: #E2953B; /* Accent strip break color */
+    margin-bottom: 15px;
+    transition: width 0.3s ease;
+}
+
+/* Interactive accent line expansion on hover */
+.founder-quote-container:hover .author-line {
+    width: 80px; /* Line expands outwards beautifully */
+}
+
+.author-name {
+    font-family: 'Marcellus', serif;
+    font-size: 16px;
+    color: #E2953B; /* Vibrant signature Ochre contrast hue */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.author-title {
+    font-size: 13px;
+    color: #CBC3BB; /* Muted subtitle texture color */
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* --- Responsive Layout for Mobile/Tablets --- */
+@media (max-width: 768px) {
+    .founder-quote-container {
+        padding: 40px 30px;
+        margin: 60px 20px 0 20px;
+    }
+    
+    .quote-text {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+    
+    .quote-graphic-mark {
+        font-size: 120px;
+        left: 20px;
+        top: -10px;
+    }
+    
+    .founder-quote-container:hover {
+        transform: translateY(-4px); /* Tamer lift behavior for mobile viewports */
+    }
+}
+
+
+/* --- 📊 Impact Statistics Dashboard Styles --- */
+.impact-stats-section {
+    padding: 90px 8%;
+    background-color: #FFFDF9;
+    text-align: center;
+}
+
+.stats-subtitle {
+    font-size: 15px;
+    color: #7A6F64;
+    margin: -35px auto 50px auto;
+    font-style: italic;
+}
+
+.stats-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.stat-graph-card {
+    background: #FFFFFF;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(47, 42, 37, 0.03);
+    border: 1px solid #F4EFEA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-graph-card h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 20px;
+    color: #8C2A32; /* Terracotta Burgundy */
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.graph-caption {
+    font-size: 13px;
+    color: #7A6F64;
+    line-height: 1.6;
+    margin-top: 25px;
+    border-top: 1px dashed #E6DFD7;
+    padding-top: 15px;
+    width: 100%;
+}
+
+/* --- ⭕ Graph 1: Native SVG Radial Graph Structure --- */
+.radial-graph-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+}
+
+.radial-svg {
+    transform: rotate(-90deg); /* Flips SVG coordinate map so progress starts from dead top */
+    width: 100%;
+    height: 100%;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #F4EFEA;
+    stroke-width: 7;
+}
+
+.circle-progress {
+    fill: none;
+    stroke: #E2953B; /* Warm Ochre Amber Accent */
+    stroke-width: 8;
+    stroke-linecap: round;
+    
+    /* 2 * PI * Radius (r=45) = ~283 total track perimeter path units */
+    stroke-dasharray: 283; 
+    stroke-dashoffset: 283; /* Completely empty mask state by default */
+    
+    transition: stroke-dashoffset 2s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+.radial-center-text {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radial-center-text .metric-number {
+    font-family: 'Marcellus', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #2F2A25;
+    line-height: 1;
+}
+
+.radial-center-text .metric-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #8C2A32;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+}
+
+/* --- 📊 Graph 2: Horizontal Bar Layouts --- */
+.bar-graph-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bar-row {
+    width: 100%;
+    text-align: left;
+}
+
+.bar-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    color: #5C5249;
+    margin-bottom: 6px;
+}
+
+.bar-value {
+    color: #8C2A32;
+    font-weight: 700;
+}
+
+.bar-track {
+    width: 100%;
+    height: 10px;
+    background-color: #F4EFEA;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    width: 0%; /* Initially flat, grows dynamically via Javascript triggers */
+    height: 100%;
+    background: linear-gradient(90deg, #E2953B 0%, #8C2A32 100%);
+    border-radius: 20px;
+    transition: width 1.8s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+/* Responsive adjustment scaling */
+@media (max-width: 768px) {
+    .stats-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* --- 📊 Impact Statistics Dashboard Styles --- */
+.impact-stats-section {
+    padding: 90px 8%;
+    background-color: #FFFDF9;
+    text-align: center;
+}
+
+.stats-subtitle {
+    font-size: 15px;
+    color: #7A6F64;
+    margin: -35px auto 50px auto;
+    font-style: italic;
+}
+
+.stats-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.stat-graph-card {
+    background: #FFFFFF;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(47, 42, 37, 0.03);
+    border: 1px solid #F4EFEA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-graph-card h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 20px;
+    color: #8C2A32; /* Terracotta Burgundy */
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.graph-caption {
+    font-size: 13px;
+    color: #7A6F64;
+    line-height: 1.6;
+    margin-top: 25px;
+    border-top: 1px dashed #E6DFD7;
+    padding-top: 15px;
+    width: 100%;
+}
+
+/* --- ⭕ Graph 1: Native SVG Radial Graph Structure --- */
+.radial-graph-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+}
+
+.radial-svg {
+    transform: rotate(-90deg); /* Flips SVG coordinate map so progress starts from dead top */
+    width: 100%;
+    height: 100%;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #F4EFEA;
+    stroke-width: 7;
+}
+
+.circle-progress {
+    fill: none;
+    stroke: #E2953B; /* Warm Ochre Amber Accent */
+    stroke-width: 8;
+    stroke-linecap: round;
+    
+    /* 2 * PI * Radius (r=45) = ~283 total track perimeter path units */
+    stroke-dasharray: 283; 
+    stroke-dashoffset: 283; /* Completely empty mask state by default */
+    
+    transition: stroke-dashoffset 2s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+.radial-center-text {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radial-center-text .metric-number {
+    font-family: 'Marcellus', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #2F2A25;
+    line-height: 1;
+}
+
+.radial-center-text .metric-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #8C2A32;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+}
+
+/* --- 📊 Graph 2: Horizontal Bar Layouts --- */
+.bar-graph-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bar-row {
+    width: 100%;
+    text-align: left;
+}
+
+.bar-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    color: #5C5249;
+    margin-bottom: 6px;
+}
+
+.bar-value {
+    color: #8C2A32;
+    font-weight: 700;
+}
+
+.bar-track {
+    width: 100%;
+    height: 10px;
+    background-color: #F4EFEA;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    width: 0%; /* Initially flat, grows dynamically via Javascript triggers */
+    height: 100%;
+    background: linear-gradient(90deg, #E2953B 0%, #8C2A32 100%);
+    border-radius: 20px;
+    transition: width 1.8s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+/* Responsive adjustment scaling */
+@media (max-width: 768px) {
+    .stats-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* --- 📊 Enhanced Stats Card Hover Glow Effects --- */
+.stat-graph-card {
+    background: #FFFFFF;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(47, 42, 37, 0.03);
+    border: 1px solid #F4EFEA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Card Hover Lift */
+.stat-graph-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(140, 42, 50, 0.06);
+}
+
+/* --- ✨ Glow Effects on Hover --- */
+/* 1. Circle Glow */
+.stat-graph-card:hover .circle-progress {
+    stroke: #8C2A32; /* Shifting color to terracotta on hover */
+    filter: drop-shadow(0 0 8px rgba(140, 42, 50, 0.6));
+}
+
+/* 2. Horizontal Bars Glow */
+.stat-graph-card:hover .bar-fill {
+    filter: drop-shadow(0 0 6px rgba(226, 149, 59, 0.5));
+}
+
+
+/* --- ⭕ Graph 1: Radial Progress --- */
+.radial-graph-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+}
+
+.radial-svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #F4EFEA;
+    stroke-width: 7;
+}
+
+.circle-progress {
+    fill: none;
+    stroke: #E26D82; /* Baseline Ochre Amber */
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 283; 
+    stroke-dashoffset: 283;
+    transition: stroke-dashoffset 2s ease, stroke 0.4s ease, filter 0.4s ease;
+}
+
+.stat-graph-card:hover .circle-progress {
+    stroke: #D2536A; /* Deepens slightly on hover */
+    filter: drop-shadow(0 0 8px rgba(226, 109, 130, 0.7)); /* 🌟 Pink neon glow bloom */
+}
+
+/* Specific multi-stage path to force the pink stroke color */
+.radial-graph-wrapper .radial-svg .circle-progress {
+    fill: none !important;
+    stroke: #E26D82 !important; /* 🌟 Forces the Rose Pink color */
+    stroke-width: 8 !important;
+    stroke-linecap: round !important;
+    stroke-dasharray: 283; 
+    stroke-dashoffset: 283;
+    transition: stroke-dashoffset 2s ease, stroke 0.4s ease, filter 0.4s ease;
+}
+
+/* Hover glow effect update */
+.stat-graph-card:hover .circle-progress {
+    stroke: #D2536A !important; 
+    filter: drop-shadow(0 0 8px rgba(226, 109, 130, 0.8)) !important; 
+}
+
+/* --- 📏 Graph 2: Horizontal Bar Layout & Grid Lines --- */
+.bar-graph-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: relative; /* Context anchor for the grid lines */
+    padding: 10px 0;
+}
+
+/* 🌟 Background Reference Grid System */
+.bar-grid-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none; /* Stops the grid from blocking mouse hovers */
+    z-index: 1;
+}
+
+.grid-line {
+    width: 1px;
+    height: 100%;
+    border-left: 1px dashed #E6DFD7; /* Delicate dashed data ticks */
+    opacity: 0.6;
+}
+
+.bar-row {
+    width: 100%;
+    text-align: left;
+    position: relative;
+    z-index: 2; /* Sits sharply on top of the dashed grid lines */
+}
+
+.bar-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    color: #5C5249;
+    margin-bottom: 8px;
+}
+
+.bar-value {
+    color: #8C2A32;
+    font-weight: 700;
+}
+
+.bar-track {
+    width: 100%;
+    height: 12px;
+    background-color: #F4EFEA;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #E2953B 0%, #8C2A32 100%);
+    border-radius: 20px;
+    transition: width 1.8s cubic-bezier(0.1, 1, 0.1, 1), filter 0.4s ease;
+}
+
+/* ==========================================
+   ⭕ FIXED RADIAL GRAPH GRAPHICS LAYER
+   ========================================== */
+
+.radial-graph-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: block;
+}
+
+.radial-svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+    overflow: visible; /* Prevents the browser from clipping the line */
+}
+
+/* Base track line */
+.circle-bg {
+    fill: none;
+    stroke: #F4EFEA;
+    stroke-width: 8;
+}
+
+/* 🌟 THE ULTIMATE OVERRIDE RULE FOR THE PINK 92% LINE */
+#radialProgressCircle {
+    fill: none !important;
+    stroke: #E26D82 !important; /* This forces your signature Rose Pink color */
+    stroke-width: 8 !important;
+    stroke-linecap: round !important;
+    
+    /* Animation settings */
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283; 
+    transition: stroke-dashoffset 2s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+/* Interactive Hover state for the pink ring */
+.stat-graph-card:hover #radialProgressCircle {
+    stroke: #D2536A !important; /* Deepens to dark rose pink on hover */
+    filter: drop-shadow(0 0 6px rgba(226, 109, 130, 0.6)); /* Glowing bloom */
+}
+
+/* ==========================================
+   ⭕ FIXED RADIAL GRAPH GRAPHICS LAYER (Zero JS Dependency)
+   ========================================== */
+
+.radial-graph-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: block;
+}
+
+.radial-svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* Base background circle track */
+.circle-bg {
+    fill: none;
+    stroke: #F4EFEA;
+    stroke-width: 8;
+}
+
+/* 🌟 THE ULTIMATE OVERRIDE FOR THE PINK 92% LINE */
+#radialProgressCircle {
+    fill: none !important;
+    stroke: #E26D82 !important; /* Rich Rose Pink Color */
+    stroke-width: 8 !important;
+    stroke-linecap: round !important;
+    
+    /* Math: 2 * PI * 45 (radius) = ~283 total length */
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283; /* Starts at 0% invisible */
+    
+    /* 🚀 NEW: Runs the animation automatically purely through CSS! */
+    animation: fillRadialCircle 2s cubic-bezier(0.1, 1, 0.1, 1) forwards;
+    animation-delay: 0.5s; /* Fires half a second after page load */
+}
+
+/* Interactive Hover state */
+.stat-graph-card:hover #radialProgressCircle {
+    stroke: #D2536A !important; 
+    filter: drop-shadow(0 0 8px rgba(226, 109, 130, 0.7)) !important; 
+}
+
+/* 🎬 KEYFRAMES: Automatically calculates and paints the 92% fill */
+@keyframes fillRadialCircle {
+    from {
+        stroke-dashoffset: 283; /* 0% filled */
+    }
+    to {
+        stroke-dashoffset: 22.6; /* 92% filled perfectly */
+    }
+}
+
+/* --- 📊 Updated Horizontal Bar Progression Styles --- */
+
+.bar-fill {
+    width: 0%;
+    height: 100%;
+    
+    /* 🌟 CHANGED: Shifts the gradient color seamlessly from Ochre Gold into your Rose Pink */
+    background: linear-gradient(90deg, #E2953B 0%, #E26D82 100%); 
+    
+    border-radius: 20px;
+    
+    /* Handles both width load pacing and instant hover effects */
+    transition: width 1.8s cubic-bezier(0.1, 1, 0.1, 1), filter 0.4s ease;
+}
+
+/* 🌟 UPDATED: Makes the horizontal bars illuminate with a soft pink aura on hover */
+.stat-graph-card:hover .bar-fill {
+    filter: drop-shadow(0 0 8px rgba(226, 109, 130, 0.65)) !important;
+}
+
+/* --- 📊 Fixed Horizontal Bar Progression Styles (Zero JS) --- */
+
+.bar-fill {
+    width: 0%; /* Base starting size */
+    height: 100%;
+    background: linear-gradient(90deg, #E2953B 0%, #E26D82 100%); /* Gold to Rose Pink */
+    border-radius: 20px;
+    
+    /* Handles the automatic loading growth animation purely in CSS */
+    animation: fillHorizontalBars 1.8s cubic-bezier(0.1, 1, 0.1, 1) forwards;
+    animation-delay: 0.6s; /* Fires smoothly right alongside the circle */
+    
+    transition: filter 0.4s ease;
+}
+
+/* 🚀 NEW: Self-contained width targets triggered directly by CSS classes */
+.bar-fill.progress-1 { --target-width: 85%; }
+.bar-fill.progress-2 { --target-width: 65%; }
+.bar-fill.progress-3 { --target-width: 45%; }
+
+/* Glowing pink aura bloom on hover */
+.stat-graph-card:hover .bar-fill {
+    filter: drop-shadow(0 0 8px rgba(226, 109, 130, 0.7)) !important;
+}
+
+/* 🎬 KEYFRAMES: Grows the bars safely from 0 to their respective targets */
+@keyframes fillHorizontalBars {
+    from {
+        width: 0%;
+    }
+    to {
+        width: var(--target-width);
+    }
+}
+
+/* --- 📊 Fixed Horizontal Bar Progression Styles (Zero JS) --- */
+
+.bar-fill {
+    width: 0%; /* Base starting size */
+    height: 100%;
+    background: linear-gradient(90deg, #E2953B 0%, #E26D82 100%); /* Gold to Rose Pink */
+    border-radius: 20px;
+    
+    /* Handles the automatic loading growth animation purely in CSS */
+    animation: fillHorizontalBars 1.8s cubic-bezier(0.1, 1, 0.1, 1) forwards;
+    animation-delay: 0.6s; /* Fires smoothly right alongside the circle */
+    
+    transition: filter 0.4s ease;
+}
+
+/* 🚀 NEW: Self-contained width targets triggered directly by CSS classes */
+.bar-fill.progress-1 { --target-width: 85%; }
+.bar-fill.progress-2 { --target-width: 65%; }
+.bar-fill.progress-3 { --target-width: 45%; }
+
+/* Glowing pink aura bloom on hover */
+.stat-graph-card:hover .bar-fill {
+    filter: drop-shadow(0 0 8px rgba(226, 109, 130, 0.7)) !important;
+}
+
+/* 🎬 KEYFRAMES: Grows the bars safely from 0 to their respective targets */
+@keyframes fillHorizontalBars {
+    from {
+        width: 0%;
+    }
+    to {
+        width: var(--target-width);
+    }
+}
+
+
+/* --- 📊 Impact Statistics Dashboard Layout (Adjusted Spacing) --- */
+.impact-stats-section {
+    padding: 50px 8% 90px 8%; /* 🌟 REDUCED top padding from 90px to 50px */
+    background-color: #FFFDF9;
+    text-align: center;
+}
+
+/* This handles the direct main header spacing */
+.impact-stats-section h2 {
+    margin-top: 0;
+    margin-bottom: 15px; /* Keeps a clean, snug space below the main title */
+}
+
+.stats-subtitle {
+    font-size: 15px;
+    color: #7A6F64;
+    margin: 0 auto 40px auto; /* 🌟 FIXED: Removed negative margin to let it sit naturally upper */
+    font-style: italic;
+}
+
+/* --- 🤖 AI Assistant Interface Widget Styles --- */
+.ai-agent-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Base Activation Button Circle */
+.ai-toggle-btn {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8C2A32 0%, #E26D82 100%); /* Terracotta to Pink */
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(140, 42, 50, 0.3);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ai-toggle-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(226, 109, 130, 0.45);
+}
+
+.ai-icon {
+    font-size: 28px;
+    z-index: 2;
+}
+
+/* Glowing Ambient Pulse Ring */
+.ai-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(226, 109, 130, 0.4);
+    border-radius: 50%;
+    z-index: 1;
+    animation: aiPulseAnimation 2s infinite ease-in-out;
+}
+
+@keyframes aiPulseAnimation {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Chat Popup Window Structure */
+.ai-chat-box {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 450px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+    border: 1px solid #F4EFEA;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(20px) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ai-chat-box.active {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Chat Header Area */
+.ai-chat-header {
+    background: #2F2A25; /* Your premium dark charcoal theme link */
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFFDF9;
+}
+
+.ai-status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ai-status-indicator h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #2ECC71; /* Neon operating green */
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.ai-close-btn {
+    background: none;
+    border: none;
+    color: #FFFDF9;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.ai-close-btn:hover { opacity: 1; }
+
+/* Message Display Stream Window */
+.ai-chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #FFFDF9;
+}
+
+.message {
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.ai-msg {
+    background-color: #F4EFEA;
+    color: #2F2A25;
+    align-self: flex-start;
+    border-top-left-radius: 2px;
+}
+
+.user-msg {
+    background-color: #E26D82;
+    color: #FFFFFF;
+    align-self: flex-end;
+    border-top-right-radius: 2px;
+}
+
+/* Chat Input Footer Controls */
+.ai-chat-footer {
+    padding: 12px 16px;
+    background: #FFFFFF;
+    border-top: 1px solid #F4EFEA;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ai-chat-footer input {
+    flex-grow: 1;
+    border: 1px solid #E6DFD7;
+    padding: 10px 12px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 13px;
+    transition: border-color 0.3s ease;
+}
+
+.ai-chat-footer input:focus {
+    border-color: #E26D82;
+}
+
+.ai-voice-btn, .ai-send-btn {
+    background: #F4EFEA;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.2s ease;
+}
+
+.ai-voice-btn:hover { background: #E6DFD7; }
+.ai-send-btn { background: #8C2A32; color: white; }
+.ai-send-btn:hover { background: #732229; }
+
+/* Active Microphone Listening State Animation Indicator */
+.ai-voice-btn.listening {
+    background: #E26D82 !important;
+    color: white;
+    animation: micPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes micPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+
+.newsletter-inline-bar {
+    max-width: 1100px;
+    margin: 50px auto; /* Evenly splits the vertical grid gap spacing */
+    padding: 35px 50px;
+    background-color: #F7F2EC; /* Gentle, warm terracotta-cream sand contrast band */
+    border-radius: 16px;
+    border: 1px solid #EAE2D8;
+}
+
+.newsletter-inner-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.newsletter-text-side {
+    text-align: left;
+    max-width: 45%;
+}
+
+.newsletter-text-side h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 22px;
+    color: #8C2A32; /* Deep Terracotta Crimson */
+    margin: 0 0 6px 0;
+    font-weight: 600;
+}
+
+.newsletter-text-side p {
+    font-size: 14px;
+    color: #5C5249;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.newsletter-action-side {
+    flex-grow: 1;
+    max-width: 50%;
+    position: relative; /* Keeps success message pinned inside the exact same box bounds */
+}
+
+/* Flex wrapper locking input field and action button inside a cohesive row layout */
+.inline-input-wrapper {
+    display: flex;
+    background: #FFFFFF;
+    border: 1px solid #DED6CB;
+    border-radius: 10px;
+    padding: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inline-input-wrapper:focus-within {
+    border-color: #E26D82; /* Pink theme highlight marker */
+    box-shadow: 0 0 0 3px rgba(226, 109, 130, 0.1);
+}
+
+.inline-input-wrapper input {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 16px;
+    outline: none;
+    font-size: 14px;
+    color: #2F2A25;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    width: 100%;
+}
+
+.inline-input-wrapper input::placeholder {
+    color: #A3978B;
+}
+
+/* Elegant horizontal entry action button configuration */
+.btn-newsletter-submit {
+    background-color: #8C2A32; /* Terracotta Primary */
+    color: #FFFFFF;
+    border: none;
+    padding: 0 24px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-newsletter-submit:hover {
+    background-color: #732229;
+}
+
+.btn-newsletter-submit:active {
+    transform: scale(0.97);
+}
+
+.btn-newsletter-submit .btn-arrow {
+    font-size: 15px;
+    transition: transform 0.2s ease;
+}
+
+.btn-newsletter-submit:hover .btn-arrow {
+    transform: translateX(4px); /* Playful micro-sliding arrow look */
+}
+
+/* --- ✨ Micro-Animated Success Banner --- */
+.inline-success-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #E26D82; /* Shifts into Rose Pink on success */
+    color: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    gap: 10px;
+    letter-spacing: 0.3px;
+    
+    /* Animation initial hidden metrics setup */
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+}
+
+/* Active Class state to slide the banner up into view */
+.inline-success-banner.reveal-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.success-check-icon {
+    background: rgba(255, 255, 255, 0.2);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .newsletter-inline-bar {
+        padding: 30px 25px;
+        margin: 40px 20px;
+    }
+    
+    .newsletter-inner-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+    
+    .newsletter-text-side, .newsletter-action-side {
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* --- 🗺️ Interactive Spatial Map Widget Styles --- */
+.impact-map-section {
+    padding: 80px 8% 40px 8%;
+    background-color: #FFFDF9;
+    text-align: center;
+}
+
+.map-subtitle {
+    font-size: 15px;
+    color: #7A6F64;
+    margin: -10px auto 40px auto;
+    font-style: italic;
+}
+
+/* Map viewport container setting rules */
+.map-interactive-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #2F2A25; /* Your sleek dark theme palette anchor color */
+    height: 480px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(47, 42, 37, 0.12);
+    border: 1px solid #221E1A;
+}
+
+/* Subtle futuristic background dashboard texture pattern mesh line tracking */
+.map-canvas-graphic {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-image: radial-gradient(rgba(226, 149, 59, 0.04) 1px, transparent 0);
+    background-size: 24px 24px;
+}
+
+/* --- 📍 Custom Glowing Pin Layout Engineering --- */
+.map-locator-pin {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.pin-core-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #E26D82; /* Pink color anchor accent */
+    border-radius: 50%;
+    position: absolute;
+    top: 5px; left: 5px;
+    z-index: 3;
+    border: 2px solid #FFFDF9;
+}
+
+/* Looping ambient locator pin ripple wave rings */
+.pin-glowing-ring {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(226, 109, 130, 0.4);
+    border-radius: 50%;
+    top: -5px; left: -5px;
+    z-index: 1;
+    animation: locatorPulse 2s infinite ease-out;
+}
+
+@keyframes locatorPulse {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* --- 📋 Hover Micro Data Card Popup Panel Layout --- */
+.pin-popup-card {
+    position: absolute;
+    bottom: 35px; /* Floats directly directly above the targeted center point */
+    left: 50%;
+    transform: translateX(-50%) translateY(15px);
+    width: 240px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    border: 1px solid #F4EFEA;
+    text-align: left;
+    
+    /* Animation hidden default settings loop */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Interactive card reveal hook bound directly to pin container hovers */
+.map-locator-pin:hover .pin-popup-card {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Glow intensity update when cursor covers item area bounds */
+.map-locator-pin:hover .pin-core-dot {
+    background-color: #E2953B; /* Shifts to rich orange amber on focus */
+    box-shadow: 0 0 10px #E2953B;
+}
+
+/* Mini Popup Typography styling details */
+.pin-popup-card h4 {
+    font-family: 'Marcellus', serif;
+    font-size: 16px;
+    color: #8C2A32;
+    margin: 0 0 6px 0;
+    font-weight: 600;
+}
+
+.popup-divider {
+    width: 30px;
+    height: 2px;
+    background-color: #E2953B;
+    margin-bottom: 12px;
+    border-radius: 1px;
+}
+
+.pin-popup-card p {
+    font-size: 13px;
+    color: #5C5249;
+    margin: 4px 0;
+    line-height: 1.4;
+}
+
+.pin-popup-card strong {
+    color: #2F2A25;
+    font-weight: 700;
+}
+
+/* Fast layout collapsing fallback parameters for smaller phone viewports */
+@media (max-width: 600px) {
+    .map-interactive-container { height: 350px; }
+    .pin-popup-card { width: 180px; padding: 12px; }
+}
+
+/* --- 🗺️ Upgraded Map Canvas Styles --- */
+.map-canvas-graphic {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    
+    /* 🌟 ADDED: High-end, clean stylized vector map background */
+    background-image: 
+        linear-gradient(to bottom, rgba(47, 42, 37, 0.45), rgba(30, 26, 23, 0.75)), /* Tint mix layer */
+        url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80'); /* Beautiful structural fallback pattern context */
+    background-size: cover;
+    background-position: center;
+    
+    /* Elegant fallback dashboard pattern matrix line grid overlay on top */
+    position: relative;
+}
+
+/* Let's make an explicit stylized SVG mesh map background alternative right in CSS if you want it strictly abstract */
+.map-interactive-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Generates an elegant digital topographic grid overlay pattern */
+    background: radial-gradient(circle, rgba(226, 149, 59, 0.08) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: 1;
+
+    /* --- 🗺️ Upgraded Architectural Map Canvas (Sleek Graphic Vector) --- */
+.map-canvas-graphic {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #26211C; /* Deep warm premium espresso base tint */
+    
+    /* 🌟 THE ULTIMATE UPGRADE: Crisp minimalist administrative outline path vector shape */
+    background-image: url('https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v11/icons/git.svg'); 
+    /* Fallback stylized canvas logic: Let's use a beautiful, clean map mask overlay */
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/33/India_outline_map.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+    /* Mix blend filter to make the white silhouette map blend into your luxury brand aesthetic */
+    filter: invert(13%) sepia(10%) saturate(1200%) hue-rotate(345deg) brightness(95%) contrast(85%) opacity(0.18);
+}
+
+/* Subtle, high-tech background layout mesh layer */
+.map-interactive-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(226, 149, 59, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+    z-index: 1;
+}
+}
+
+/* --- 💰 Interactive Donation Slider Styles --- */
+.impact-calculator-section {
+    padding: 60px 8% 60px 8%;
+    background-color: #FFFDF9;
+    text-align: center;
+}
+
+.calc-subtitle {
+    font-size: 15px;
+    color: #7A6F64;
+    margin: -10px auto 40px auto;
+    font-style: italic;
+}
+
+.calculator-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border-radius: 20px;
+    border: 1px solid #F4EFEA;
+    box-shadow: 0 8px 30px rgba(47, 42, 37, 0.04);
+    display: flex;
+    overflow: hidden;
+}
+
+/* Left Side Control Panel Styling */
+.calc-control-side {
+    flex: 1;
+    background-color: #F7F2EC; /* Warm neutral sand backdrop */
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #EAE2D8;
+}
+
+.amount-display-box {
+    color: #8C2A32; /* Terracotta Primary */
+    font-family: 'Marcellus', serif;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.amount-display-box .currency-symbol {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.amount-display-box .amount-val {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.slider-wrapper {
+    width: 100%;
+    max-width: 350px;
+}
+
+/* Custom HTML Range Slider track architecture overrides */
+#impactSlider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #EAE2D8;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 12px;
+}
+
+/* Webkit handle thumb (Chrome, Safari, Edge, Opera) */
+#impactSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #E26D82; /* Signature Rose Pink */
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(226, 109, 130, 0.4);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#impactSlider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    background: #D2536A;
+}
+
+/* Firefox handle thumb alternative track */
+#impactSlider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #E26D82;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(226, 109, 130, 0.4);
+    border: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#impactSlider::-moz-range-thumb:hover {
+    transform: scale(1.15);
+    background: #D2536A;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #A3978B;
+    font-weight: 600;
+}
+
+/* Right Side Output Dynamic Feedback Box */
+.calc-output-side {
+    flex: 1.2;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    text-align: left;
+}
+
+.impact-output-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #F4EFEA;
+}
+
+.impact-output-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.output-icon {
+    font-size: 28px;
+    background: #FFFDF9;
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #F4EFEA;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+}
+
+.output-details h4 {
+    font-family: 'Marcellus', serif;
+    font-size: 20px;
+    color: #2F2A25;
+    margin: 0 0 2px 0;
+    font-weight: 600;
+}
+
+.output-details p {
+    font-size: 14px;
+    color: #7A6F64;
+    margin: 0;
+}
+
+/* Responsive Handling Layout Stack */
+@media (max-width: 768px) {
+    .calculator-card {
+        flex-direction: column;
+    }
+    .calc-control-side {
+        border-right: none;
+        border-bottom: 1px solid #EAE2D8;
+        padding: 40px;
+    }
+    .calc-output-side {
+        padding: 40px 25px;
+    }
+}
+
+/* --- 💰 Updated Calculator Card Base Styles --- */
+.calculator-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border-radius: 20px;
+    border: 1px solid #F4EFEA;
+    display: flex;
+    overflow: hidden;
+    
+    /* Smooth transition for card lift and glow shadow updates */
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+                border-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* 🌟 NEW: Main Box Neon Glow Effect on Hover */
+.calculator-card:hover {
+    transform: translateY(-6px); /* Lifts card gracefully */
+    border-color: rgba(226, 109, 130, 0.25); /* Subtle pink borders */
+    box-shadow: 0 20px 40px rgba(140, 42, 50, 0.08),  /* Deep layout shadow */
+                0 0 25px rgba(226, 109, 130, 0.15);   /* Soft ambient pink aura glow */
+}
+
+/* 🌟 NEW: Active Slider Thumb Handle Intense Glow Overrides */
+#impactSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #E26D82; 
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(226, 109, 130, 0.4);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                background-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+/* When hovering over the slider, make the thumb flare up pink */
+#impactSlider::-webkit-slider-thumb:hover {
+    transform: scale(1.25);
+    background: #D2536A;
+    box-shadow: 0 0 15px rgba(226, 109, 130, 0.8); /* Intense laser halo glow */
+}
+
+/* Firefox tracking support for the slider glow */
+#impactSlider::-moz-range-thumb:hover {
+    transform: scale(1.25);
+    background: #D2536A;
+    box-shadow: 0 0 15px rgba(226, 109, 130, 0.8);
+}
+
+/* 🌟 NEW: Micro-Interaction Glow for Output Emojis */
+.impact-output-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #F4EFEA;
+    transition: transform 0.3s ease;
+}
+
+.calculator-card:hover .impact-output-row:hover {
+    transform: translateX(5px); /* Row gently shifts right on focus */
+}
+
+/* Makes the badge boxes behind emojis illuminate when the dashboard card is hovered */
+.calculator-card:hover .output-icon {
+    border-color: rgba(226, 109, 130, 0.3);
+    background-color: #FFFDF9;
+    text-shadow: 0 0 8px rgba(226, 109, 130, 0.4); /* Makes the emoji itself glow */
+    box-shadow: 0 4px 15px rgba(226, 109, 130, 0.1);
+}
+
+/* ==========================================================================
+   💰 HIGH-INTENSITY GLOW CALCULATOR ARCHITECTURE
+   ========================================================================== */
+
+.calculator-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border-radius: 20px;
+    border: 1px solid #F4EFEA;
+    display: flex;
+    overflow: hidden;
+    
+    /* Smooth transform rendering tracks */
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+                border-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* 🌟 TRIPLE-STACKED NEON GLOW: This makes the pink bloom highly visible */
+.calculator-card:hover {
+    transform: translateY(-8px); /* Lifts slightly higher for better drop impact */
+    border-color: #E26D82 !important; /* Highlights borders in signature pink */
+    
+    box-shadow: 
+        0 20px 38px rgba(140, 42, 50, 0.06),     /* Layer 1: Realistic drop shadow */
+        0 0 15px rgba(226, 109, 130, 0.35),       /* Layer 2: Core neon inner glow aura */
+        0 0 35px rgba(226, 109, 130, 0.20);       /* Layer 3: Broad background light bleed */
+}
+
+/* 🌟 SLIDER INPUT TRACK GLOW MODIFICATIONS */
+#impactSlider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #EAE2D8;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 12px;
+    transition: background 0.3s ease;
+}
+
+/* Make the track highlight when the whole card is interacted with */
+.calculator-card:hover #impactSlider {
+    background: #F4D3D8; /* Swaps the gray slider track to a soft pink base */
+}
+
+/* Webkit Handle Thumb Glow (Chrome, Safari, Edge) */
+#impactSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 26px; /* Slightly larger target */
+    height: 26px;
+    border-radius: 50%;
+    background: #E26D82; 
+    cursor: pointer;
+    border: 2px solid #FFFFFF; /* High-contrast white border ring to pop out */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s;
+}
+
+/* 🌟 Thumb flare state on direct interaction */
+#impactSlider::-webkit-slider-thumb:hover {
+    transform: scale(1.3);
+    background: #D2536A;
+    /* Layered drop shadow specifically targeting the floating knob element */
+    box-shadow: 
+        0 0 10px #E26D82,
+        0 0 20px rgba(226, 109, 130, 0.8);
+}
+
+/* Firefox tracking alternative thumb parameters */
+#impactSlider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #E26D82;
+    cursor: pointer;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s;
+}
+#impactSlider::-moz-range-thumb:hover {
+    transform: scale(1.3);
+    background: #D2536A;
+    box-shadow: 
+        0 0 10px #E26D82,
+        0 0 20px rgba(226, 109, 130, 0.8);
+}
+
+/* 🌟 ROW EMOJI BADGE GLOW EXTENSION */
+.calculator-card:hover .output-icon {
+    border-color: #E26D82 !important;
+    background-color: #FFFDF9;
+    /* Gives the internal emojis an active glowing backing effect */
+    box-shadow: 0 0 12px rgba(226, 109, 130, 0.25);
+    transform: scale(1.05);
+}
